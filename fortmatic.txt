@@ -1,0 +1,36 @@
+test: pk_test_ADD5A47BC52A9746
+
+production: pk_live_D373A8BD5552DF22
+
+
+<!-- TODO: Step 1: Include Fortmatic SDK Script -->
+<script src="https://cdn.jsdelivr.net/npm/fortmatic@latest/dist/fortmatic.js"></script>
+<!-- End Step 1 -->
+
+
+// TODO: Step 2: Setup Developer API Key
+let fm = new Fortmatic('pk_test_ADD5A47BC52A9746');
+web3 = new Web3(fm.getProvider());
+// End Step 2
+
+
+// TODO: Step 3: Send Transaction Implementation
+web3.eth.sendTransaction({
+  // From address will automatically be replaced by the address of current user
+  from: '0x0000000000000000000000000000000000000000',
+  to: address,
+  value: web3.utils.toWei(amount, 'ether')
+});
+// End Step 3
+
+
+
+import Fortmatic from 'fortmatic';
+// Works for web3 1.0 and pre-1.0 versions
+import Web3 from 'web3';
+
+const fm = new Fortmatic('YOUR_API_KEY');
+window.web3 = new Web3(fm.getProvider());
+
+// Send transactions the way your are used to
+web3.eth.sendTransaction({/* ... */});
