@@ -56,9 +56,9 @@ export default {
     data: () => ({
         open: mdiOpenInApp,
         cards: [
-            { title: "Transcript",  color: "red", icon: mdiFilePdfBox, route: "/transcript" },
+            { title: "Report",  color: "red", icon: mdiFilePdfBox, route: "/transcript" },
             { title: "Results",  color: "green", icon: mdiBookOpenPageVariant, route: "/result"},
-            { title: "Grade Point", color: "blue", icon: mdiBook, route: "/grade_point" },
+            { title: "Position", color: "blue", icon: mdiBook, route: "/grade_point" },
         ],
     }),
 }

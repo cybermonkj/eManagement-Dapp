@@ -1,8 +1,15 @@
 <template>
     <div>
         <app-bar />
-        <v-content class="grey lighten-5 mt-5">
-            <panel /><br>
+        <v-content class="white mt-12">
+            <v-container>
+                <detail-card />
+                <panel />
+                <sub-dash />
+                <sub-tables /><br>
+            </v-container>
+
+            <v-sheet height="200"></v-sheet>
             <br>
             <br>
             <div id="fab-env">
@@ -28,6 +35,9 @@
 import AppBar from '@/components/core/AppBar.vue';
 import FooterCard from '@/components/core/FooterCard.vue';
 import Panel from '@/components/material/Panel.vue';
+import DetailCard from '@/components/material/DetailCard.vue';
+import SubDashboard from '@/components/material/SubDashboard.vue';
+import SubTables from '@/components/material/SubTables.vue';
 import { mdiPlus } from "@mdi/js";
 
 
@@ -37,6 +47,9 @@ export default {
         'app-bar': AppBar,
         'footer-card': FooterCard, 
         'panel': Panel,
+        'detail-card': DetailCard,
+        'sub-dash': SubDashboard,
+        'sub-tables': SubTables,
     },
     data() {
         return {
