@@ -29,7 +29,6 @@ export default {
         return {
             navItems: [
                 { title: "Home", to: '/about' },
-                { title: "Login", to: '/about' },
                 { title: "Features", to: '/about' },
                 { title: "About", to: '/about' },
             ]
