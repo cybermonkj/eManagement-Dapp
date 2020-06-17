@@ -12,8 +12,8 @@
               sm="5"
               id="options"
               >
-                <v-btn x-large dark class="ml-3 mr-3 font-weight-bold" id="start">Start Here</v-btn>
-                <v-btn x-large outlined class="ml-2 mr-2 font-weight-bold" color="blue-grey darken-2">Demo</v-btn>
+                <v-btn x-large dark class="ml-3 mr-3 font-weight-bold homeButton" id="start">Start Here</v-btn>
+                <v-btn x-large outlined class="ml-2 mr-2 font-weight-bold homeButton" color="blue-grey darken-2">Demo</v-btn>
               </v-col>
 
               <v-col
@@ -78,7 +78,7 @@
               <v-card flat class="mx-auto">
                 <div class="text-center">
                   <v-avatar tile size="100">
-                    <v-icon style="color: rgb(52, 50, 94) !important;">{{ secure }}</v-icon>
+                    <v-icon  style="color: rgb(52, 50, 94) !important;">{{ secure }}</v-icon>
                   </v-avatar>
                   <v-container>
                     <v-card-text class="subtitle-1" id="sect2Text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -125,12 +125,14 @@
        <v-card flat height="200"></v-card>
       </div>
     </v-content>
+    <footer-app />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from '@/components/core/NavBar.vue';
+import Footer from '@/components/core/Footer.vue';
 import { mdiViewDashboardOutline } from "@mdi/js";
 import { mdiDesktopMacDashboard } from "@mdi/js";
 import { mdiLightbulbMultipleOutline } from "@mdi/js";
@@ -142,6 +144,7 @@ export default {
   name: 'Home',
   components: {
     'nav-bar': NavBar,
+    'footer-app': Footer,
   },
   data() {
     return {
@@ -183,6 +186,19 @@ export default {
   .grad {
     background-color: rgb(14, 27, 70) !important;
     border-radius: 0px !important;
+  }
+  @media screen and (max-width: 1024px) {
+    .grad {
+      height: 350px !important;
+      text-align: center !important;
+    }
+    .homeButton {
+      height: 45px !important;
+      width: 55px !important;
+      font-size: 11px !important;
+      transform: translateY(4rem) !important;
+      text-align: center !important;
+    }
   }
 
 </style>

@@ -20,10 +20,9 @@
                     ripple
                     large
                     dark
-                    color="amber darken-1"
                     router to="/register/student/new"
                 >
-                    <v-icon dark id="icon">{{ plus }}</v-icon>
+                    <v-icon size="45" dark id="icon">{{ chat }}</v-icon>
                 </v-btn>
             </div>
         </v-content>
@@ -38,7 +37,7 @@ import Panel from '@/components/material/Panel.vue';
 import DetailCard from '@/components/material/DetailCard.vue';
 import SubDashboard from '@/components/material/SubDashboard.vue';
 import SubTables from '@/components/material/SubTables.vue';
-import { mdiPlus } from "@mdi/js";
+import { mdiChat } from "@mdi/js";
 
 
 
@@ -53,7 +52,7 @@ export default {
     },
     data() {
         return {
-            plus: mdiPlus,
+            chat: mdiChat,
         }
     },
 }
@@ -65,6 +64,7 @@ export default {
         bottom: 75px;
         right: 25px;
         z-index: 10;
+        background-color: rgb(14, 27, 70) !important;
     }
     #icon {
         font-size: 1.5rem !important;
