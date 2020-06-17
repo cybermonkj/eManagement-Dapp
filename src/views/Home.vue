@@ -1,105 +1,148 @@
 <template>
-  <div class="home blue-grey lighten-5">
+  <div class="home white">
+    <nav-bar />
     <v-content class="mt-12">
-      <v-container>
-        <v-row justify="center" align="start">
-          <v-card
-           class="mx-auto home"
-           height="500"
-           flat
-          >
-
-            <div class="text-center mt-3">
-              <h1 class="blue-grey--text fon overline">E-Management Dapp</h1>
-            </div>
-
-            <div class="text-center mt-12">
-              <v-avatar size="100" tile>
-                <img src="@/assets/logo.png" alt="logo">
-              </v-avatar>
-            </div>
-
-            <div class="text-center mt-4">
-              <v-card-text>
-                <div class="font-weight-light grey--text text--darken-3 body-2">Hi Usman, You are welcome to eManagement dapp</div>
-              </v-card-text>
-            </div>
-
-            <div class="text-center mt-5 mb-5">
-              <v-btn
-               router to="/dashboard"
-               dark
-               ripple
-               large
-               color="indigo"
+      <header class="blue-grey lighten-5 header">
+        <div class="headerImg">
+          <v-container>
+            <v-row>
+              <v-col
+              cols="12"
+              md="5"
+              sm="5"
+              id="options"
               >
-                go to dashboard
-                <v-icon right>{{ dash }}</v-icon>
-              </v-btn>
-            </div>
-          </v-card>
-        </v-row>
-      </v-container>
+                <v-btn x-large dark class="ml-3 mr-3 font-weight-bold" id="start">Start Here</v-btn>
+                <v-btn x-large outlined class="ml-2 mr-2 font-weight-bold" color="blue-grey darken-2">Demo</v-btn>
+              </v-col>
+
+              <v-col
+              cols="12"
+              md="7"
+              sm="7"
+              >
+                <v-img
+                 src="@/assets/book.svg"
+                 width="100%"
+                ></v-img>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+      </header>
+
+      <div class="section-2">
+        <v-container>
+          <v-row justify="center">
+            <v-col
+             cols="12"
+             md="4"
+             sm="12"
+            >
+              <v-card flat class="mx-auto">
+                <div class="text-center">
+                  <v-avatar tile size="100">
+                    <v-icon style="color: rgb(18, 34, 88) !important;">{{ easy }}</v-icon>
+                  </v-avatar>
+                  <v-container>
+                    <v-card-text class="subtitle-1" id="sect2Text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Ipsum dolor sit amet consectetur adipisicing elit.</v-card-text>
+                  </v-container>
+                </div>
+              </v-card>
+            </v-col>
+
+            <v-col
+             cols="12"
+             md="4"
+             sm="12"
+            >
+              <v-card flat class="mx-auto">
+                <div class="text-center">
+                  <v-avatar tile size="100">
+                    <v-icon color="blue lighten-1">{{ fast }}</v-icon>
+                  </v-avatar>
+                  <v-container>
+                    <v-card-text class="subtitle-1" id="sect2Text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Ipsum dolor sit amet consectetur adipisicing elit.</v-card-text>
+                  </v-container>
+                </div>
+              </v-card>
+            </v-col>
+
+            <v-col
+             cols="12"
+             md="4"
+             sm="12"
+            >
+              <v-card flat class="mx-auto">
+                <div class="text-center">
+                  <v-avatar tile size="100">
+                    <v-icon style="color: rgb(52, 50, 94) !important;">{{ secure }}</v-icon>
+                  </v-avatar>
+                  <v-container>
+                    <v-card-text class="subtitle-1" id="sect2Text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Ipsum dolor sit amet consectetur adipisicing elit.</v-card-text>
+                  </v-container>
+                </div>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
     </v-content>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import NavBar from '@/components/core/NavBar.vue';
 import { mdiViewDashboardOutline } from "@mdi/js";
+import { mdiDesktopMacDashboard } from "@mdi/js";
+import { mdiLightbulbMultipleOutline } from "@mdi/js";
+import { mdiServerSecurity } from "@mdi/js";
 
 
 export default {
   name: 'Home',
   components: {
+    'nav-bar': NavBar,
   },
   data() {
     return {
       dash: mdiViewDashboardOutline,
+      easy: mdiDesktopMacDashboard,
+      fast: mdiLightbulbMultipleOutline,
+      secure: mdiServerSecurity,
     }
   },
 
   computed: {
-    studentEmail: {
-      get() {
-        return this.$store.state.student.email;
-      },
-      set(v) {
-        this.$store.commit("PROCESSED_EMAIL", v);
-      }
-    }
+    //
   },
   methods: {
-    capturedId() {
-      alert(this.$store.state.student.email)
-      console.log("Inputed Email", this.$store.state.student.email)
-    },
+   //
   },
 }
 </script>
 
 <style scoped>
-  #login {
-    text-transform: capitalize !important;
-    font-size: 1rem !important;
+  .headerImg {
+    transform: translateY(-1.2rem) !important;
   }
-  #title {
-    font-size: 1.5rem !important;
-    font-family: cursive !important;
+  .header {
+    transform: translateY(-3rem) !important;
+    border-radius: 0rem 0rem 0rem 13rem !important;
   }
-  .home {
+  #options {
+    transform: translateY(19rem) !important;
+  }
+  #sect2Text {
+    transform: translateY(-1.4rem) !important;
     background-color: transparent !important;
   }
-  .v-application .overline {
-    font-size: 2.1rem !important;
-    letter-spacing: 2px !important;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  #start {
+    background-color: rgb(14, 27, 70) !important;
   }
-  @media screen and (max-width: 1024px) {
-    .v-application .overline {
-      font-size: 1.5rem !important;
-      letter-spacing: 1px !important;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-    }
-  }
+
 </style>

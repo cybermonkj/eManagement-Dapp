@@ -1,57 +1,101 @@
 <template>
   <div class>
     <v-row justify="center">
-      <v-col cols="12" md="3">
-        <v-card class="mx-auto" height="140" elevation="5">
-          <v-toolbar class="ml-2 mr-2 text-center" color="blue darken-3" id="bar">
-            <v-toolbar-title class="text-center white--text title">Faculty</v-toolbar-title>
+      <v-col cols="12" md="4">
+        <v-card class="mx-auto" height="150" elevation="5">
+          <v-toolbar class="ml-2 mr-2 text-center" color="blue-grey darken-2" id="bar">
+            <v-toolbar-title flat class="text-center white--text title">Students</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
 
-          <v-sheet class="text-center">
-            <v-card-text class="blue-grey--text text--darken-3 fon">{{ faculty }}</v-card-text>
+          <v-sheet class="text-center detail-body">
+            <v-row>
+              <v-col
+               cols="12"
+               md="4"
+               sm="4"
+              >
+                <v-icon color="blue-grey" size="65">{{ student }}</v-icon>
+              </v-col>
+
+              <v-col
+               cols="12"
+               md="8"
+               sm="8"
+              >
+                <v-card-text>
+                  <span class="font-weight-bold display-1 blue-grey--text  text--darken-4">20</span>
+                  <p class="subtitle-2 blue-grey--text text--darken-2">Total Students</p>
+                </v-card-text>
+              </v-col>
+            </v-row>
           </v-sheet>
         </v-card>
         <br />
       </v-col>
 
-      <v-col cols="12" md="3">
-        <v-card class="mx-auto" height="140" elevation="5">
-          <v-toolbar class="ml-2 mr-2 text-center" color="blue-grey" id="bar">
-            <v-toolbar-title class="text-center white--text title">Department</v-toolbar-title>
+      <v-col cols="12" md="4">
+        <v-card class="mx-auto" height="150" elevation="5">
+          <v-toolbar class="ml-2 mr-2 text-center" color="primary" id="bar">
+            <v-toolbar-title class="text-center white--text title">Active Students</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
 
-          <v-sheet class="text-center">
-            <v-card-text class="blue-grey--text text--darken-3 fon">{{ department }}</v-card-text>
+          <v-sheet class="text-center detail-body">
+            <v-row>
+              <v-col
+               cols="12"
+               md="4"
+               sm="4"
+              >
+                <v-icon color="primary darken-3" size="65">{{ active }}</v-icon>
+              </v-col>
+
+              <v-col
+               cols="12"
+               md="8"
+               sm="8"
+              >
+                <v-card-text>
+                  <span class="font-weight-bold display-1 blue-grey--text  text--darken-4">10</span>
+                  <p class="subtitle-2 blue-grey--text text--darken-2">Total Active Students</p>
+                </v-card-text>
+              </v-col>
+            </v-row>
           </v-sheet>
         </v-card>
         <br />
       </v-col>
 
-      <v-col cols="12" md="3">
-        <v-card class="mx-auto" height="140" elevation="5">
-          <v-toolbar class="ml-2 mr-2 text-center" color="purple" id="bar">
-            <v-toolbar-title class="text-center white--text title">Level</v-toolbar-title>
+      <v-col cols="12" md="4">
+        <v-card class="mx-auto" height="150" elevation="5">
+          <v-toolbar class="ml-2 mr-2 text-center" color="light-green darken-1" id="bar">
+            <v-toolbar-title class="text-center white--text title">Session</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
 
-          <v-sheet class="text-center">
-            <v-card-text v-show="lCard" class="blue-grey--text text--darken-3 fon">{{ level }} Level</v-card-text>
-          </v-sheet>
-        </v-card>
-        <br />
-      </v-col>
+          <v-sheet class="text-center detail-body">
+            <v-row>
+              <v-col
+               cols="12"
+               md="4"
+               sm="4"
+              >
+                <v-icon color="green" size="65">{{ session }}</v-icon>
+              </v-col>
 
-      <v-col cols="12" md="3">
-        <v-card class="mx-auto" height="140" elevation="5">
-          <v-toolbar class="ml-2 mr-2 text-center" color="indigo" id="bar">
-            <v-toolbar-title class="text-center white--text title">Matriculation Number</v-toolbar-title>
-            <v-spacer></v-spacer>
-          </v-toolbar>
-
-          <v-sheet class="text-center">
-            <v-card-text class="blue-grey--text text--darken-3 fon">{{ matno }}</v-card-text>
+              <v-col
+               cols="12"
+               md="8"
+               sm="8"
+              >
+                <v-card-text>
+                  <span class="font-weight-bold title blue-grey--text  text--darken-4">First Term</span>
+                  <p class="subtitle-1 blue-grey--text text--darken-2" id="sess">2019/2020 Session</p>
+                  
+                </v-card-text>
+              </v-col>
+            </v-row>
           </v-sheet>
         </v-card>
         <br />
@@ -63,9 +107,15 @@
 
 
 <script>
+import { mdiHumanChild } from "@mdi/js";
+import { mdiHumanHandsup } from "@mdi/js";
+import { mdiRecycle } from "@mdi/js";
 export default {
   data: () => ({
     lCard: false,
+    student: mdiHumanChild,
+    active: mdiHumanHandsup,
+    session: mdiRecycle,
   }),
   computed: {
     matno() {
@@ -94,12 +144,21 @@ export default {
 };
 </script>
 
-<style>
-#bar {
-  transform: translateY(-2rem);
-  border-radius: 15px 0px 15px 0px;
-}
-.fon {
-  font-size: 16px;
-}
+<style scoped>
+  .v-toolbar {
+    transform: translateY(-2rem) !important;
+    border-radius: 15px 0px 15px 0px !important;
+  }
+  .fon {
+    font-size: 16px;
+  }
+  .detail-body {
+    transform: translateY(-2rem) !important;
+    background-color: transparent !important;
+  }
+
+  #sess {
+    padding: 0px !important;
+  }
+
 </style>

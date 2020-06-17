@@ -2,25 +2,11 @@
   <div>
     <app-bar></app-bar>
 
-    <v-content class="grey lighten-5 mt-12">
+    <v-content class="grey lighten-5 mt-12 mb-5">
       <v-container>
-        <detail-card></detail-card>
+        <student-card></student-card>
         <material-card></material-card>
       </v-container>
-      <!-- <div id="fab-env">
-        <router-link :to="this.route">
-          <v-btn
-           id="fab" 
-           class="pink"
-           dark 
-           large
-           icon 
-           fab
-          >
-            <v-icon size="32" class="text-center">{{ this.add }}</v-icon>
-          </v-btn>
-        </router-link>
-      </div> -->
     </v-content><br>
     <br>
     <br>
@@ -32,7 +18,7 @@
 // import EthereumMixin from "../mixins/ethereumMixin";
 import AppBar from "../components/core/AppBar";
 import Cards from "../components/material/cards";
-import DetailCard from "../components/material/DetailCard";
+import StudentCard from "../components/material/StudentCard";
 import FooterCard from "../components/core/FooterCard";
 import { mdiPlus } from '@mdi/js';
 
@@ -40,7 +26,7 @@ export default {
   components: {
     "app-bar": AppBar,
     "material-card": Cards,
-    "detail-card": DetailCard,
+    "student-card": StudentCard,
     "footer-card": FooterCard
   },
 
