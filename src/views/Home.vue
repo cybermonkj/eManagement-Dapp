@@ -89,6 +89,40 @@
             </v-col>
           </v-row>
         </v-container>
+
+        <v-sheet
+         class="mx-auto grad"
+         dark
+         elevation="0"
+         height="200"
+         width="100%"
+        >
+          <v-container>
+            <v-row justify="center">
+              <v-col
+               cols="12"
+               md="8"
+               sm="12"
+              >
+                <v-card-text class="display-1" style="text-align: center;">Thank You for Trusting Us</v-card-text>
+                <v-card-text class="subtitle-2" style="text-align: center;">A secured e-management system</v-card-text>
+              </v-col>
+
+              <v-col
+               cols="12"
+               md="4"
+               sm="12"
+              >
+                <v-avatar size="90">
+                  <v-icon color="white">{{ cert }}</v-icon>
+                </v-avatar>
+                <v-card-text class="overline">Trusted</v-card-text>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-sheet>
+
+       <v-card flat height="200"></v-card>
       </div>
     </v-content>
   </div>
@@ -101,6 +135,7 @@ import { mdiViewDashboardOutline } from "@mdi/js";
 import { mdiDesktopMacDashboard } from "@mdi/js";
 import { mdiLightbulbMultipleOutline } from "@mdi/js";
 import { mdiServerSecurity } from "@mdi/js";
+import { mdiCertificateOutline } from "@mdi/js";
 
 
 export default {
@@ -114,6 +149,7 @@ export default {
       easy: mdiDesktopMacDashboard,
       fast: mdiLightbulbMultipleOutline,
       secure: mdiServerSecurity,
+      cert: mdiCertificateOutline,
     }
   },
 
@@ -143,6 +179,10 @@ export default {
   }
   #start {
     background-color: rgb(14, 27, 70) !important;
+  }
+  .grad {
+    background-color: rgb(14, 27, 70) !important;
+    border-radius: 0px !important;
   }
 
 </style>
