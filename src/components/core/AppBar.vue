@@ -93,6 +93,16 @@
         </v-btn>
       </div>
     </v-app-bar>
+
+    <v-overlay :value="token">
+      <v-progress-circular indeterminate size="90">
+        <v-avatar tile size="60">
+          <v-img
+            src="@/assets/logo.png"
+          ></v-img>
+        </v-avatar>
+      </v-progress-circular>
+    </v-overlay>
   </div>
 </template>
 
@@ -124,8 +134,9 @@ export default {
     notify: mdiBellCircleOutline,
     bell: mdiBell,
     
-
+  // Js code
     links: [{ icon: mdiViewDashboard, text: "Dashboard", route: "/dashboard" }],
+    token: false,
 
     navItems: [
       { title: "Dashboard", icon: mdiViewDashboard, route: "/dashboard" },
@@ -142,11 +153,13 @@ export default {
 
   methods: {
     async logout() {
-      fm.user.logout();
+      this.token = true;
+      await fm.user.logout();
+      this.token = false;
     },
   },
   created() {
-    //
+    
   }
 };
 </script>

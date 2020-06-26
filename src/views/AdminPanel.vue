@@ -12,7 +12,7 @@
             <v-sheet height="200"></v-sheet>
             <br>
             <br>
-            <div id="fab-env">
+            <!-- <div id="fab-env">
                 <v-btn
                     id="fab"
                     class="mx-2"
@@ -20,11 +20,11 @@
                     ripple
                     large
                     dark
-                    router to="/register/student/new"
+                    
                 >
                     <v-icon size="45" dark id="icon">{{ chat }}</v-icon>
                 </v-btn>
-            </div>
+            </div> -->
         </v-content>
         <footer-card />
     </div>
@@ -78,8 +78,8 @@ export default {
             right: 25px;
         }
         .v-btn--fab.v-size--large {
-            height: 55px;
-            width: 55px;
+            height: 50px;
+            width: 50px;
         }
     }
 </style>

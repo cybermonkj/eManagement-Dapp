@@ -27,8 +27,61 @@
                                             <v-img height="250" src="@/assets/male.svg"></v-img>
 
                                             <v-card-text>
+                                                <h2 class="title indigo--text text--darken-2">Stephen Sunday</h2>
+                                                <p class="subheader font-weight-light blue-grey--text text--darken-2"><v-icon color="blue-grey" left>{{ idea }}</v-icon>CEO</p>
+                                                <span class="caption grey--text text--darken-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                                            </v-card-text>
+
+                                            <v-divider></v-divider>
+                                            <v-card-actions class="indigo"></v-card-actions>
+                                            <!-- Overlay Content -->
+                                            <v-fade-transition>
+                                                <v-overlay
+                                                    v-if="hover"
+                                                    absolute
+                                                    color="#1A237E"
+                                                >
+                                                    <v-row justify="center">
+                                                        <v-btn small class="mx-1 white bor" @click="go">
+                                                            <v-icon class="grey--text text--darken-3">{{ github }}</v-icon>
+                                                        </v-btn>
+                                                        <v-btn small class="mx-1 white bor" @click="go">
+                                                            <v-icon class="blue--text">{{ twitter }}</v-icon>
+                                                        </v-btn>
+                                                        <v-btn small class="mx-1 white bor" @click="go">
+                                                            <v-icon class="blue--text text--darken-2">{{ linkedin }}</v-icon>
+                                                        </v-btn>
+                                                        <v-btn small class="mx-1 white bor" @click="go">
+                                                            <v-icon class="blue--text text--darken-4">{{ facebook }}</v-icon>
+                                                        </v-btn>
+                                                    </v-row>
+
+                                                    <div class="text-center mt-2">
+                                                        <v-btn>See more info <v-icon right>{{ open }}</v-icon></v-btn>
+                                                    </div>
+                                                </v-overlay>
+                                            </v-fade-transition>
+                                        </v-card>
+                                    </template>
+                                </v-hover>
+                            </v-col>
+                            
+                            <v-col
+                             cols="12"
+                             md="4"
+                             sm="12"
+                            >
+                                <v-hover>
+                                    <template v-slot:default="{ hover }">
+                                        <v-card
+                                         class="mx-auto"
+                                         elevation="5"
+                                        >
+                                            <v-img height="250" src="@/assets/male.svg"></v-img>
+
+                                            <v-card-text>
                                                 <h2 class="title primary--text text--darken-1">Alabura Usman Aliyu</h2>
-                                                <p class="subheader font-weight-light blue-grey--text text--darken-2"><v-icon color="blue-grey" left>{{ code }}</v-icon>Lead Developer</p>
+                                                <p class="subheader font-weight-light blue-grey--text text--darken-2"><v-icon color="blue-grey" left>{{ code }}</v-icon>CTO</p>
                                                 <span class="caption grey--text text--darken-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
                                             </v-card-text>
 
@@ -80,7 +133,7 @@
 
                                             <v-card-text>
                                                 <h2 class="title amber--text text--darken-2">Anop Joshua</h2>
-                                                <p class="subheader font-weight-light blue-grey--text text--darken-2"><v-icon color="blue-grey" left>{{ code }}</v-icon>Developer</p>
+                                                <p class="subheader font-weight-light blue-grey--text text--darken-2"><v-icon color="blue-grey" left>{{ code }}</v-icon>Cofounder</p>
                                                 <span class="caption grey--text text--darken-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
                                             </v-card-text>
 
@@ -110,59 +163,6 @@
 
                                                     <div class="text-center mt-2">
                                                         <v-btn>See more info <v-icon right>{{ open }}</v-icon></v-btn>                                                    </div>
-                                                </v-overlay>
-                                            </v-fade-transition>
-                                        </v-card>
-                                    </template>
-                                </v-hover>
-                            </v-col>
-
-                            <v-col
-                             cols="12"
-                             md="4"
-                             sm="12"
-                            >
-                                <v-hover>
-                                    <template v-slot:default="{ hover }">
-                                        <v-card
-                                         class="mx-auto"
-                                         elevation="5"
-                                        >
-                                            <v-img height="250" src="@/assets/male.svg"></v-img>
-
-                                            <v-card-text>
-                                                <h2 class="title indigo--text text--darken-2">Stephen Kusu</h2>
-                                                <p class="subheader font-weight-light blue-grey--text text--darken-2"><v-icon color="blue-grey" left>{{ idea }}</v-icon>Co-founder</p>
-                                                <span class="caption grey--text text--darken-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-                                            </v-card-text>
-
-                                            <v-divider></v-divider>
-                                            <v-card-actions class="indigo"></v-card-actions>
-                                            <!-- Overlay Content -->
-                                            <v-fade-transition>
-                                                <v-overlay
-                                                    v-if="hover"
-                                                    absolute
-                                                    color="#1A237E"
-                                                >
-                                                    <v-row justify="center">
-                                                        <v-btn small class="mx-1 white bor" @click="go">
-                                                            <v-icon class="grey--text text--darken-3">{{ github }}</v-icon>
-                                                        </v-btn>
-                                                        <v-btn small class="mx-1 white bor" @click="go">
-                                                            <v-icon class="blue--text">{{ twitter }}</v-icon>
-                                                        </v-btn>
-                                                        <v-btn small class="mx-1 white bor" @click="go">
-                                                            <v-icon class="blue--text text--darken-2">{{ linkedin }}</v-icon>
-                                                        </v-btn>
-                                                        <v-btn small class="mx-1 white bor" @click="go">
-                                                            <v-icon class="blue--text text--darken-4">{{ facebook }}</v-icon>
-                                                        </v-btn>
-                                                    </v-row>
-
-                                                    <div class="text-center mt-2">
-                                                        <v-btn>See more info <v-icon right>{{ open }}</v-icon></v-btn>
-                                                    </div>
                                                 </v-overlay>
                                             </v-fade-transition>
                                         </v-card>

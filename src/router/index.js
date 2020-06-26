@@ -9,6 +9,7 @@ import Registration from '../views/Registration.vue'
 import Transcript from '../views/StudentTranscript.vue'
 import AdminPanel from '../views/AdminPanel.vue'
 import About from '../views/About.vue'
+import SignUp from '../components/core/Signup.vue'
 
 Vue.use(VueRouter)
 
@@ -65,6 +66,12 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About
+  },
+
+  {
+    path: '/create/new/staff',
+    name: 'Signup',
+    component: SignUp
   },
   // {
   //   path: '/about',

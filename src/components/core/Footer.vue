@@ -30,7 +30,7 @@
         <p class="white--text grey darken-4">
           <v-row justify="center">
               <v-icon>{{ accountIcon }}</v-icon>
-              <span class="ml-2 subtitle-2">Wallet Address</span>
+              <span class="ml-2 subtitle-2">{{ account }}</span>
           </v-row>
       </p>
       </v-card-text>
@@ -51,6 +51,12 @@ import { mdiAccountBoxOutline } from "@mdi/js";
         'fab fa-instagram',
       ],
     }),
+
+    computed: {
+      account() {
+        return this.$store.state.account;
+      }
+    }
   }
 </script>
 
