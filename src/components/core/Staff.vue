@@ -19,7 +19,7 @@
                             <v-row>
                                 <v-col cols="12" md="12" sm="12">
                                     <v-text-field
-                                        v-model="email"
+                                        v-model="loginForm.email"
                                         rounded
                                         shaped
                                         outlined
@@ -34,7 +34,7 @@
 
                                 <v-col cols="12" md="12" sm="12">
                                     <v-text-field
-                                        v-model="password"
+                                        v-model="loginForm.password"
                                         rounded
                                         shaped
                                         outlined
@@ -63,7 +63,7 @@
 
                         <v-spacer></v-spacer>
 
-                        <v-btn dark class="mt-1" style="background-color: rgb(14, 27, 70) !important; font-size: 12px !important;" type="submit">Login</v-btn>
+                        <v-btn @click.prevent="login" dark class="mt-1" style="background-color: rgb(14, 27, 70) !important; font-size: 12px !important;" type="submit">Login</v-btn>
                     </v-card-actions>
                     
                 </v-card-text>
@@ -99,15 +99,20 @@ export default {
             },
 
             // Firebase Code
-            email: null,
-            password: null,
+            loginForm: {
+                email: "",
+                password: "",
+            },
+            
         }
     },
 
     methods: {
-        onLogin() {
-            //Vuex
-            console.log(`${this.email} and ${this.password}`)
+        login() {
+            this.$store.dispatch('login', {
+                email: this.loginForm.email,
+                password: this.loginForm.password
+            })
         }
     }
 }

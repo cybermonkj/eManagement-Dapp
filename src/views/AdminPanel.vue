@@ -12,19 +12,6 @@
             <v-sheet height="200"></v-sheet>
             <br>
             <br>
-            <!-- <div id="fab-env">
-                <v-btn
-                    id="fab"
-                    class="mx-2"
-                    fab
-                    ripple
-                    large
-                    dark
-                    
-                >
-                    <v-icon size="45" dark id="icon">{{ chat }}</v-icon>
-                </v-btn>
-            </div> -->
         </v-content>
         <footer-card />
     </div>

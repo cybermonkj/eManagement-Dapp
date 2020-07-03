@@ -10,6 +10,7 @@ import Transcript from '../views/StudentTranscript.vue'
 import AdminPanel from '../views/AdminPanel.vue'
 import About from '../views/About.vue'
 import SignUp from '../components/core/Signup.vue'
+const fb = require('../firebaseConfig')
 
 Vue.use(VueRouter)
 
@@ -23,43 +24,50 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: { requireAuth: true }
   },
 
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    meta: { requireAuth: true }
   },
 
   {
     path: '/grade_point',
     name: 'GradePoint',
-    component: Grade
+    component: Grade,
+    meta: { requireAuth: true }
   },
 
   {
     path: '/transcript',
     name: 'Transcript',
-    component: Transcript
+    component: Transcript,
+    meta: { requireAuth: true }
   },
 
   {
     path: '/result',
     name: 'Result',
-    component: Result
+    component: Result,
+    meta: { requireAuth: true }
   },
 
   {
     path: '/register/student/new', 
     name: 'Registration',
-    component: Registration
+    component: Registration,
+    meta: { requireAuth: true }
   },
 
   {
     path: '/admin/panel',
     name: 'Admin_panel',
-    component: AdminPanel
+    component: AdminPanel,
+    meta: { requireAuth: true }
   },
 
   {
@@ -87,6 +95,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const requireAuth = to.matched.some(x => x.meta.requiresAuth)
+
+  if (requireAuth && !fb.auth.currentUser) {
+    next('/')
+  } else {
+    next()
+  } 
 })
 
 export default router

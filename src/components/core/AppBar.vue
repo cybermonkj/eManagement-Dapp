@@ -71,7 +71,7 @@
 
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn @click="logout" block ripple color="blue-grey">
+          <v-btn @click="signOut" block ripple color="blue-grey">
             <span>Logout</span>
             <v-icon right>{{ open }}</v-icon>
           </v-btn>
@@ -117,6 +117,7 @@ import { mdiOpenInNew } from "@mdi/js";
 import { mdiSettings } from "@mdi/js";
 import { mdiBell } from "@mdi/js";
 import { mdiBellCircleOutline } from "@mdi/js"; 
+const fb = require('../../firebaseConfig')
 
 import fm from '@/contracts/fortmatic.js';
 
@@ -152,10 +153,18 @@ export default {
   },
 
   methods: {
-    async logout() {
-      this.token = true;
-      await fm.user.logout();
-      this.token = false;
+    async signOut() {
+      this.token = true
+      fb.auth.signOut()
+        .then(user => {
+          alert(`${user.user.email} has logged out!`)
+          this.$router.push('/')
+        }).catch(error => {
+          console.error(error)
+          this.token = false
+        })
+      await fm.user.logout()
+      this.token = false
     },
   },
   created() {

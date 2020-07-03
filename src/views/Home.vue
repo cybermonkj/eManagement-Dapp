@@ -197,7 +197,7 @@
        <v-sheet>
          <v-container>
            <div class="display-2 text-center blue--text text--darken-4 mb-5 font-weight-light">App Screenshot</div>
-           <carousel />
+           <!-- <carousel /> -->
          </v-container>
        </v-sheet>
       </div>
@@ -220,7 +220,7 @@
 // @ is an alias to /src
 import NavBar from '@/components/core/NavBar.vue';
 import Footer from '@/components/core/Footer.vue';
-import Carousel from '@/components/material/Carousel.vue';
+//import Carousel from '@/components/material/Carousel.vue';
 import { mdiViewDashboardOutline } from "@mdi/js";
 import { mdiDesktopMacDashboard } from "@mdi/js";
 import { mdiLightbulbMultipleOutline } from "@mdi/js";
@@ -233,7 +233,7 @@ export default {
   components: {
     'nav-bar': NavBar,
     'footer-app': Footer,
-    'carousel': Carousel,
+    // 'carousel': Carousel,
   },
 
   data() {
@@ -246,7 +246,7 @@ export default {
       cert: mdiCertificateOutline,
 
       // Js code
-      token: true,
+      token: false,
     }
   },
 

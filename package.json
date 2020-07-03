@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Alabs02/e-management_dapp.git"
   },
-  "author": "Alabura Usman & Anop Joshua <alabson.inc@gmail.com> & <rolexy.inc@gmail.com>",
+  "author": "Alabura Usman <alabson.inc@gmail.com> & Anop Joshua <rolexy.inc@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Alabs02/e-management_dapp/issues"
@@ -28,7 +28,6 @@
     "fortmatic": "^2.0.6",
     "html2canvas": "^1.0.0-rc.5",
     "html2pdf": "^0.0.11",
-    "ipfs-http-client": "^42.0.0",
     "ipfs-http-client-lite": "^0.3.0",
     "ipfs-mini": "^1.1.5",
     "jspdf": "^1.5.3",
@@ -43,7 +42,7 @@
     "@mdi/js": "^4.9.95",
     "@vue/cli-plugin-babel": "^4.2.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
-    "@vue/cli-service": "^4.2.0",
+    "@vue/cli-service": "~4.4.6",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",

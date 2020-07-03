@@ -4,64 +4,63 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import Fortmatic from 'fortmatic'
-import * as firebase from 'firebase'
 import Web3 from 'web3'
+const fb = require('./firebaseConfig')
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  vuetify,
+let app
+fb.auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      vuetify,
 
-  data() {
-    return {
-      account: null,
-      contract: null,
-      userData: null,
-    }
-  },
+      data() {
+        return {
+          account: null,
+          contract: null,
+          userData: null,
+        }
+      },
 
-  computed: {
+      computed: {
 
-  },
+      },
 
-  async mounted() {
-    //
-  },
+      async mounted() {
+        //
+      },
 
-  async created() {
-   
-    await this.login();
+      async created() {
 
-     // Commit acct addr to store
-    await this.updatedAcct();
-    await firebase.initializeApp({
-      apiKey: "AIzaSyArE92zCu7S1ZLix8hs-IPVuEM5YKuXh3U",
-      authDomain: "emanagementdapp.firebaseapp.com",
-      databaseURL: "https://emanagementdapp.firebaseio.com",
-      projectId: "emanagementdapp",
-      storageBucket: "emanagementdapp.appspot.com"
-    })
-  },
+        await this.login();
 
-  methods: {
-    async login() {
-      const fm = new Fortmatic('pk_test_ADD5A47BC52A9746');
-      const web3 = new Web3(fm.getProvider());
+        // Commit acct addr to store
+        await this.updatedAcct();
+      },
 
-      //Login
-      await fm.configure({ primaryLoginOption: 'email' });
-      await fm.user.login();
-      const accounts = await web3.eth.getAccounts();
-      this.account = await accounts[0];
-      console.log("Account: ", this.account);
-    },
+      methods: {
+        async login() {
+          const fm = new Fortmatic('pk_test_ADD5A47BC52A9746');
+          const web3 = new Web3(fm.getProvider());
 
-    async updatedAcct() {
-      await this.$store.commit('ACCOUNT', await this.account);
-    },
-  },
+          //Login
+          await fm.configure({ primaryLoginOption: 'email' });
+          await fm.user.login();
+          const accounts = await web3.eth.getAccounts();
+          this.account = await accounts[0];
+          console.log("Account: ", this.account);
+        },
 
-  render: h => h(App)
-}).$mount('#app')
+        async updatedAcct() {
+          await this.$store.commit('ACCOUNT', await this.account);
+        },
+      },
+
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
+
