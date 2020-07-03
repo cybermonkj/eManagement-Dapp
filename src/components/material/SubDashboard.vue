@@ -171,7 +171,7 @@
                      md="3"
                      sm="12"
                     >
-                        <v-card @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
+                        <v-card router to="/register/student/new" @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
                             <v-row justify="center">
                                 <v-col
                                  cols="12"
@@ -341,7 +341,7 @@
                      md="3"
                      sm="12"
                     >
-                        <v-card @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
+                        <v-card router to="/create/new/staff" @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
                             <v-row justify="center">
                                 <v-col
                                  cols="12"

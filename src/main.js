@@ -5,53 +5,62 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import Fortmatic from 'fortmatic'
 import Web3 from 'web3'
+const fb = require('./firebaseConfig')
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  vuetify,
+let app
+fb.auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      vuetify,
 
-  data() {
-    return {
-      account: null,
-      contract: null,
-      userData: null,
-    }
-  },
+      data() {
+        return {
+          account: null,
+          contract: null,
+          userData: null,
+        }
+      },
 
-  computed: {
+      computed: {
 
-  },
+      },
 
-  async mounted() {
-    //
-  },
+      async mounted() {
+        //
+      },
 
-  async created() {
-    // Commit acct to store
-    await this.login();
-  },
+      async created() {
 
-  methods: {
-    async login() {
-      const fm = new Fortmatic('pk_test_ADD5A47BC52A9746');
-      const web3 = new Web3(fm.getProvider());
+        await this.login();
 
-      // Login
-      fm.configure({ primaryLoginOption: 'email' }).then(() => {
-        fm.user.login().then(() => {
-          const accounts = web3.eth.getAccounts().then(console.log);
-          console.log('Accounts: ', accounts);
-        });
-      });
+        // Commit acct addr to store
+        await this.updatedAcct();
+      },
 
-    }
-    // async updatedAcct() {
-    //   await this.$store.commit('ACCOUNT', await this.account);
-    // },
-  },
+      methods: {
+        async login() {
+          const fm = new Fortmatic('pk_test_ADD5A47BC52A9746');
+          const web3 = new Web3(fm.getProvider());
 
-  render: h => h(App)
-}).$mount('#app')
+          //Login
+          await fm.configure({ primaryLoginOption: 'email' });
+          await fm.user.login();
+          const accounts = await web3.eth.getAccounts();
+          this.account = await accounts[0];
+          console.log("Account: ", this.account);
+        },
+
+        async updatedAcct() {
+          await this.$store.commit('ACCOUNT', await this.account);
+        },
+      },
+
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
+

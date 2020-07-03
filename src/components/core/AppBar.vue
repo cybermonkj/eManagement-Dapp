@@ -71,7 +71,7 @@
 
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn @click="logout" block ripple color="blue-grey">
+          <v-btn @click="signOut" block ripple color="blue-grey">
             <span>Logout</span>
             <v-icon right>{{ open }}</v-icon>
           </v-btn>
@@ -93,6 +93,16 @@
         </v-btn>
       </div>
     </v-app-bar>
+
+    <v-overlay :value="token">
+      <v-progress-circular indeterminate size="90">
+        <v-avatar tile size="60">
+          <v-img
+            src="@/assets/logo.png"
+          ></v-img>
+        </v-avatar>
+      </v-progress-circular>
+    </v-overlay>
   </div>
 </template>
 
@@ -107,6 +117,7 @@ import { mdiOpenInNew } from "@mdi/js";
 import { mdiSettings } from "@mdi/js";
 import { mdiBell } from "@mdi/js";
 import { mdiBellCircleOutline } from "@mdi/js"; 
+const fb = require('../../firebaseConfig')
 
 import fm from '@/contracts/fortmatic.js';
 
@@ -124,8 +135,9 @@ export default {
     notify: mdiBellCircleOutline,
     bell: mdiBell,
     
-
+  // Js code
     links: [{ icon: mdiViewDashboard, text: "Dashboard", route: "/dashboard" }],
+    token: false,
 
     navItems: [
       { title: "Dashboard", icon: mdiViewDashboard, route: "/dashboard" },
@@ -141,12 +153,22 @@ export default {
   },
 
   methods: {
-    async logout() {
-      fm.user.logout();
+    async signOut() {
+      this.token = true
+      fb.auth.signOut()
+        .then(user => {
+          alert(`${user.user.email} has logged out!`)
+          this.$router.push('/')
+        }).catch(error => {
+          console.error(error)
+          this.token = false
+        })
+      await fm.user.logout()
+      this.token = false
     },
   },
   created() {
-    //
+    
   }
 };
 </script>

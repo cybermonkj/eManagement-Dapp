@@ -42,7 +42,8 @@
               <v-card flat class="mx-auto">
                 <div class="text-center">
                   <v-avatar tile size="100">
-                    <v-icon style="color: rgb(18, 34, 88) !important;">{{ easy }}</v-icon>
+                    <!-- <v-icon style="color: rgb(18, 34, 88) !important;">{{ easy }}</v-icon> -->
+                    <v-img src="@/assets/server.svg"></v-img>
                   </v-avatar>
                   <v-container>
                     <v-card-text class="subtitle-1" id="sect2Text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -122,10 +123,96 @@
           </v-container>
         </v-sheet>
 
-       <v-card flat height="200"></v-card>
+       <v-card flat height="100"></v-card>
+
+       <v-sheet>
+         <v-container>
+          <v-row>
+            <v-col cols="12" md="4" sm="12">
+              <v-card flat>
+                <v-row justify="center">
+                    <v-avatar tile size="80">
+                    <v-img
+                      src="@/assets/security.svg"
+                    ></v-img>
+                  </v-avatar>
+                  <v-container></v-container>
+
+                  <v-card-title style="text-align: center;" class="sectTitle">Lorem Ipsum</v-card-title>
+
+                  <v-card-text style="text-align: center !important;" class="sectText">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas minima, sequi 
+                    quod, quos eum dolore similique est dignissimos, 
+                    quaerat inventore eos! Aliquam ipsa autem expedita explicabo reprehenderit, illum consequatur corporis!
+                  </v-card-text>
+                </v-row>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12" md="4" sm="12">
+              <v-card flat>
+                <v-row justify="center">
+                    <v-avatar tile size="80">
+                    <v-img
+                      src="@/assets/serverx.svg"
+                    ></v-img>
+                  </v-avatar>
+                  <v-container></v-container>
+
+                  <v-card-title style="text-align: center;" class="sectTitle">Lorem Ipsum</v-card-title>
+
+                  <v-card-text style="text-align: center !important;" class="sectText">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas minima, sequi 
+                    quod, quos eum dolore similique est dignissimos, 
+                    quaerat inventore eos! Aliquam ipsa autem expedita explicabo reprehenderit, illum consequatur corporis!
+                  </v-card-text>
+                </v-row>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12" md="4" sm="12">
+              <v-card flat>
+                <v-row justify="center">
+                    <v-avatar size="80">
+                    <v-img
+                      src="@/assets/secured.svg"
+                    ></v-img>
+                  </v-avatar>
+                  <v-container></v-container>
+
+                  <v-card-title style="text-align: center;" class="sectTitle">Lorem Ipsum</v-card-title>
+
+                  <v-card-text style="text-align: center !important;" class="sectText">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas minima, sequi 
+                    quod, quos eum dolore similique est dignissimos, 
+                    quaerat inventore eos! Aliquam ipsa autem expedita explicabo reprehenderit, illum consequatur corporis!
+                  </v-card-text>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+          </v-container>
+       </v-sheet>
+
+       <v-sheet>
+         <v-container>
+           <div class="display-2 text-center blue--text text--darken-4 mb-5 font-weight-light">App Screenshot</div>
+           <!-- <carousel /> -->
+         </v-container>
+       </v-sheet>
       </div>
     </v-content>
     <footer-app />
+
+    <v-overlay :value="token">
+      <v-progress-circular indeterminate size="90">
+        <v-avatar tile size="60">
+          <v-img
+            src="@/assets/logo.png"
+          ></v-img>
+        </v-avatar>
+      </v-progress-circular>
+    </v-overlay>
   </div>
 </template>
 
@@ -133,6 +220,7 @@
 // @ is an alias to /src
 import NavBar from '@/components/core/NavBar.vue';
 import Footer from '@/components/core/Footer.vue';
+//import Carousel from '@/components/material/Carousel.vue';
 import { mdiViewDashboardOutline } from "@mdi/js";
 import { mdiDesktopMacDashboard } from "@mdi/js";
 import { mdiLightbulbMultipleOutline } from "@mdi/js";
@@ -145,14 +233,20 @@ export default {
   components: {
     'nav-bar': NavBar,
     'footer-app': Footer,
+    // 'carousel': Carousel,
   },
+
   data() {
     return {
+      // Icons
       dash: mdiViewDashboardOutline,
       easy: mdiDesktopMacDashboard,
       fast: mdiLightbulbMultipleOutline,
       secure: mdiServerSecurity,
       cert: mdiCertificateOutline,
+
+      // Js code
+      token: false,
     }
   },
 
@@ -172,6 +266,12 @@ export default {
   .header {
     transform: translateY(-3rem) !important;
     border-radius: 0rem 0rem 0rem 13rem !important;
+  }
+  .sectTitle {
+    transform: translateY(-1.1rem) !important;
+  }
+  .sectText {
+    transform: translateY(-1.5rem) !important;
   }
   #options {
     transform: translateY(19rem) !important;

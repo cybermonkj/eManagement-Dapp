@@ -20,8 +20,10 @@
                                 rounded
                                 shaped
                                 outlined
+                                counter
                                 color="blue-grey"
                                 label="Enter child's ID"
+                                :rules="[rules.required, rules.min]"
                                 class="mt-3"
                             ></v-text-field>
                         </v-form>
@@ -29,13 +31,13 @@
                     <v-divider></v-divider>
 
                     <v-card-actions>
-                        <v-btn @click="dialog = false" icon dark class="mt-1 blue-grey lighten-3">
+                        <v-btn @click="dialog = false" icon dark class="mt-1 blue-grey lighten-1">
                             <v-icon>{{ close }}</v-icon>
                         </v-btn>
 
                         <v-spacer></v-spacer>
 
-                        <v-btn router to="/dashboard" dark  class="mt-1" style="background-color: rgb(14, 27, 70) !important; font-size: 11px !important;">Access Portal</v-btn>
+                        <v-btn router to="/dashboard" dark  class="mt-1" style="background-color: rgb(14, 27, 70) !important; font-size: 11px !important;">Access Dashboard</v-btn>
                     </v-card-actions>
                     
                 </v-card-text>
@@ -53,9 +55,19 @@ import { mdiCloseCircle } from "@mdi/js";
 export default {
     data() {
         return {
-            Studentcode: "",
-            dialog: false,
+            // Icons
             close: mdiCloseCircle,
+
+            // JS code
+            dialog: false,
+            rules: {
+                required: value => !!value || 'Required.',
+                min: v => v.length >= 4 || 'Id must be 4 numbers',
+                emailMatch: () => ('The email and password you entered don\'t match'),
+            },
+
+            // Firebase 
+            studentCode: "",
         }
     },
 }
