@@ -100,7 +100,7 @@
                                         >
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-text-field
-                                                    v-model.trim="date"
+                                                    v-model.trim="student.dob"
                                                     label="Date of Birth"
                                                     hint="MM/DD/YYYY format"
                                                     persistent-hint
@@ -112,7 +112,7 @@
                                                     v-on="on"
                                                 ></v-text-field>
                                             </template>
-                                        <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
+                                        <v-date-picker v-model="student.dob" no-title @input="menu1 = false"></v-date-picker>
                                         </v-menu>
                                     </v-col>
                                 </v-row>
@@ -161,6 +161,9 @@
                 </v-container>
             </v-content>
         <footer-card />
+        <v-overlay :value="createState">
+            <v-progress-circular indeterminate size="70"></v-progress-circular>
+        </v-overlay>
     </div>
 </template>
     
@@ -171,6 +174,8 @@ import Footer from '@/components/core/FooterCard.vue'
 import { mdiPlusCircleOutline } from '@mdi/js'
 import { mdiCalendar } from '@mdi/js'
 const fb = require("../../firebaseConfig")
+const IPFS = require('ipfs-mini');
+const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 
 export default {
@@ -190,6 +195,7 @@ export default {
             classes: ['Primary 1', 'Primary 2', 'Primary 3', 'Jss 1', 'Jss 2', 'SSS 1', 'SSS 2'],
             date: new Date().toISOString().substr(0, 10),
             menu1: false,
+            createState: false,
 
             // Firebase code
             student: {
@@ -199,11 +205,14 @@ export default {
                 lname: "",
                 sex: "",
                 class: null,
-                dob: null,
+                dob: new Date().toISOString().substr(0, 10),
                 number: null,
                 email: "",
                 addr: ""
-            }
+            },
+            buffer: null,
+            currentHash: null,
+            hash: null,
         }
     },
 
@@ -212,33 +221,63 @@ export default {
     },
 
     computed: {
-
+        contract() {
+            return this.$store.state.contract
+        }
     },
 
     methods: {
         addStudent() {
+            this.createState = true
             const obj = this.student
-            const studentBuffer = JSON.stringify(obj)
-            const buffer = Buffer.from(studentBuffer, 'utf-8')
-            console.log(buffer)
-
+            const data = JSON.stringify(obj)
+            const buffer = Buffer.from(data)
+            this.buffer = buffer
+            console.log(this.buffer)
             fb.studentCollection.doc('2').set({
                 addr: this.student.addr,
                 class: this.student.class,
                 dob: this.student.dob,
                 email: this.student.email,
                 fname: this.student.fname,
-                gender: this.student.gender,
+                gender: this.student.sex,
                 lName: this.student.lname,
                 mName: this.student.mname,
                 number: this.student.number,
                 uid: this.student.id
             }).then(() => {
                 alert('Document written successfully!')
+                this.createState = false
+                ipfs.add(this.buffer, (err, hash) => {
+                    if(err) {
+                        alert('Error occured')
+                        throw err
+                    } else {
+                        this.currentHash = hash
+                        alert(`https://ipfs.infura.io/ipfs/${hash}`)
+                        console.log(`https://ipfs.infura.io/ipfs/${this.currentHash}`)
+                    }
+                })
+
+                // this.$store.state.contract.methods.sendStudentHash(this.currentHash).send({ from: this.$store.state.account })
+                //     .then(res => {
+                //         this.hash = this.currentHash
+                //         console.log("Results", res)
+                //     })
+                
+                
             }).catch(error => {
                 alert('An error occured!')
                 console.error("Error writing document: ",error)
+                this.createState = false
             }) 
+            // ipfs.add(this.buffer).then(res => {
+            //     alert("Ipfs fired successfully")
+            //     console.log(res)
+            // }).catch(error => {
+            //     throw error
+            // });
+
         }
     },
 }
@@ -248,4 +287,5 @@ export default {
     .toolbar {
         background-color: rgb(14, 27, 70) !important;
     }
+    /* #0e1b46 */
 </style>

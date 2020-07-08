@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import Fortmatic from 'fortmatic'
 import Web3 from 'web3'
+import Management from '../Management/build/contracts/Management.json'
 const fb = require('./firebaseConfig')
 
 Vue.config.productionTip = false
@@ -25,8 +26,10 @@ fb.auth.onAuthStateChanged(user => {
         return {
           account: null,
           contract: null,
+          hash: null,
           userData: null,
           fortToken: true,
+
         }
       },
 
@@ -59,6 +62,23 @@ fb.auth.onAuthStateChanged(user => {
           const accounts = await web3.eth.getAccounts();
           this.account = await accounts[0];
           console.log("Account: ", this.account);
+          const networkId = await web3.eth.net.getId()
+          const networkData = Management.networks[networkId]
+          if (networkData) {
+            // Fetch contract
+            const abi = Management.abi
+            const address = networkData[networkId]  
+            const contract = web3.eth.Contract(abi, address)
+            this.contract = contract
+            await this.$store.commit('CONTRACTDOURCE', await this.contract)
+            console.log(this.contract)
+
+            // Temporary Ethereum getters
+            // const staffHash = await contract.methods.getStaffHash(1).call()
+            // this.hash = staffHash[1]
+          } else {
+            alert("Smart not deployed to detected network! ")
+          }
         },
 
         // async fortmaticToken() {
