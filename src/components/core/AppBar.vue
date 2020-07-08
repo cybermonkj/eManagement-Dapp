@@ -153,17 +153,21 @@ export default {
   },
 
   methods: {
-    async signOut() {
+    signOut() {
       this.token = true
       fb.auth.signOut()
-        .then(user => {
-          alert(`${user.user.email} has logged out!`)
+        .then(() => {
+          fm.user.logout().then(() => {
+            alert('Fortmatic logout successfully!')
+          })
+          this.token = false
+          alert('Firebase logout')
           this.$router.push('/')
         }).catch(error => {
           console.error(error)
           this.token = false
         })
-      await fm.user.logout()
+      
       this.token = false
     },
   },

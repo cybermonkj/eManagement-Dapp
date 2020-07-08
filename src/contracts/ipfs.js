@@ -1,5 +1,5 @@
 //imports the IPFS API
-import IPFS from 'ipfs-mini';
+const IPFS = require('ipfs-mini');
 
 /**
  * creates & exports new instance for 

@@ -19,7 +19,7 @@
                             <v-row>
                                 <v-col cols="12" md="12" sm="12">
                                     <v-text-field
-                                        v-model="loginForm.email"
+                                        v-model.trim="loginForm.email"
                                         rounded
                                         shaped
                                         outlined
@@ -34,8 +34,7 @@
 
                                 <v-col cols="12" md="12" sm="12">
                                     <v-text-field
-                                        v-model="loginForm.password"
-                                        rounded
+                                        v-model.trim="loginForm.password"
                                         shaped
                                         outlined
                                         color="blue-grey"
@@ -68,8 +67,16 @@
                     
                 </v-card-text>
             </v-card>
-            
         </v-dialog>
+        <v-overlay :value="firebaseState">
+            <v-progress-circular indeterminate size="90">
+                <v-avatar tile size="60">
+                <v-img
+                    src="@/assets/logo.png"
+                ></v-img>
+                </v-avatar>
+            </v-progress-circular>
+        </v-overlay>
     </div>
 </template>
 
@@ -78,6 +85,7 @@
 import { mdiCloseCircle } from "@mdi/js";
 import { mdiEyeOutline } from "@mdi/js";
 import { mdiEyeOffOutline } from "@mdi/js";
+const fb = require('../../firebaseConfig')
 
 
 export default {
@@ -91,6 +99,7 @@ export default {
             //Js code
             dialog: false,
             showP: false,
+            firebaseState: false,
 
             rules: {
                 required: value => !!value || 'Required.',
@@ -109,10 +118,25 @@ export default {
 
     methods: {
         login() {
-            this.$store.dispatch('login', {
-                email: this.loginForm.email,
-                password: this.loginForm.password
-            })
+            this.firebaseState = true
+           fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(user => {
+               console.log(user)
+               alert(user.user.email, "is logged in successfully!")
+               this.firebaseState = false
+
+               // Send staff to admin panel
+               this.$router.push("/admin/panel")
+           }).catch(error => {
+               let errCode = error.errCode
+               let errMsg = error.message
+               if(errCode == 'auth/wrong-password') {
+                   alert('Password or email is wrong!')
+                   throw errCode
+               } else {
+                   alert('An error occured, please check your internet connection!')
+                   throw errMsg
+               }
+           })
         }
     }
 }
