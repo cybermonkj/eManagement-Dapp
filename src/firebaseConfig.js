@@ -20,17 +20,20 @@ firebase.initializeApp(firebaseConfig)
 // Utils
 const db = firebase.firestore()
 const auth = firebase.auth()
+// const functions = firebase.functions()
 
 // Collection references
 const pupilsCollection = db.collection('pupils')
 const studentsCollection = db.collection('students')
 const staffCollection = db.collection('staff')
+const studentCollection = db.collection('student')
 const classesCollection = db.collection('classes')
 
 // Export utils
 export {
     db,
     auth,
+    studentCollection,
     pupilsCollection,
     studentsCollection,
     staffCollection,

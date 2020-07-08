@@ -204,7 +204,7 @@
     </v-content>
     <footer-app />
 
-    <v-overlay :value="token">
+    <v-overlay :value="this.$root.$data.fortToken">
       <v-progress-circular indeterminate size="90">
         <v-avatar tile size="60">
           <v-img
@@ -220,7 +220,6 @@
 // @ is an alias to /src
 import NavBar from '@/components/core/NavBar.vue';
 import Footer from '@/components/core/Footer.vue';
-//import Carousel from '@/components/material/Carousel.vue';
 import { mdiViewDashboardOutline } from "@mdi/js";
 import { mdiDesktopMacDashboard } from "@mdi/js";
 import { mdiLightbulbMultipleOutline } from "@mdi/js";
@@ -251,7 +250,10 @@ export default {
   },
 
   computed: {
-    //
+    // Fortmatic state
+    fortmaticState() {
+      return this.$store.state.fortState;
+    },
   },
   methods: {
    //

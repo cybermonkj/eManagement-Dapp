@@ -171,7 +171,7 @@
                      md="3"
                      sm="12"
                     >
-                        <v-card router to="/register/student/new" @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
+                        <v-card rrouter to="/add_student" @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
                             <v-row justify="center">
                                 <v-col
                                  cols="12"
@@ -188,7 +188,7 @@
                                  md="8"
                                  sm="8"
                                 >
-                                    <v-card-text class="subtitle-1 font-weight-bold blue-grey--text text--darken-4">Create New Student</v-card-text>
+                                    <v-card-text  class="subtitle-1 font-weight-bold blue-grey--text text--darken-4">Create New Student</v-card-text>
                                 </v-col>
                             </v-row>
                         </v-card>
@@ -199,7 +199,7 @@
                      md="3"
                      sm="12"
                     >
-                        <v-card @click="push" height="111" color="blue-grey lighten-4" id="cardBorder">
+                        <v-card router to="/manage_student" height="111" color="blue-grey lighten-4" id="cardBorder">
                             <v-row justify="center">
                                 <v-col
                                  cols="12"
@@ -358,7 +358,7 @@
                                  md="8"
                                  sm="8"
                                 >
-                                    <v-card-text class="subtitle-1 font-weight-bold blue-grey--text text--darken-4">Create New Staff</v-card-text>
+                                    <v-card-text router to="/create/new/staff" class="subtitle-1 font-weight-bold blue-grey--text text--darken-4">Create New Staff</v-card-text>
                                 </v-col>
                             </v-row>
                         </v-card>
