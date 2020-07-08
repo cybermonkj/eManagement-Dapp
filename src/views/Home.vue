@@ -31,56 +31,7 @@
 
       <div class="section-2">
         <v-container>
-          <v-row justify="center">
-            <v-col cols="12" md="4" sm="12">
-              <v-card flat class="mx-auto">
-                <div class="text-center">
-                  <v-avatar tile size="100">
-                    <!-- <v-icon style="color: rgb(18, 34, 88) !important;">{{ easy }}</v-icon> -->
-                    <v-img src="@/assets/server.svg"></v-img>
-                  </v-avatar>
-                  <v-container>
-                    <v-card-text class="subtitle-1" id="sect2Text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ipsum dolor sit amet consectetur adipisicing elit.
-                    </v-card-text>
-                  </v-container>
-                </div>
-              </v-card>
-            </v-col>
-
-            <v-col cols="12" md="4" sm="12">
-              <v-card flat class="mx-auto">
-                <div class="text-center">
-                  <v-avatar tile size="100">
-                    <v-icon color="blue lighten-1">{{ fast }}</v-icon>
-                  </v-avatar>
-                  <v-container>
-                    <v-card-text class="subtitle-1" id="sect2Text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ipsum dolor sit amet consectetur adipisicing elit.
-                    </v-card-text>
-                  </v-container>
-                </div>
-              </v-card>
-            </v-col>
-
-            <v-col cols="12" md="4" sm="12">
-              <v-card flat class="mx-auto">
-                <div class="text-center">
-                  <v-avatar tile size="100">
-                    <v-icon style="color: rgb(52, 50, 94) !important;">{{ secure }}</v-icon>
-                  </v-avatar>
-                  <v-container>
-                    <v-card-text class="subtitle-1" id="sect2Text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ipsum dolor sit amet consectetur adipisicing elit.
-                    </v-card-text>
-                  </v-container>
-                </div>
-              </v-card>
-            </v-col>
-          </v-row>
+         
         </v-container>
 
         <v-sheet class="mx-auto grad" dark elevation="0" height="200" width="100%">
