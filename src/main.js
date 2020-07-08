@@ -77,7 +77,7 @@ fb.auth.onAuthStateChanged(user => {
             // const staffHash = await contract.methods.getStaffHash(1).call()
             // this.hash = staffHash[1]
           } else {
-            alert("Smart not deployed to detected network! ")
+            console.log("Smart not deployed to detected network! ")
           }
         },
 

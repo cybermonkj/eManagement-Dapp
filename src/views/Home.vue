@@ -29,6 +29,19 @@
         </div>
       </header>
 
+      <v-container>
+        <v-row justify="center">
+          <v-alert
+            type="warning"
+            border="left"
+            outlined
+            dark
+          >
+            This app is still under development
+          </v-alert>
+        </v-row>
+      </v-container>
+
       <div class="section-2">
         <v-container>
          
@@ -137,8 +150,6 @@
               </v-row>
             </template>
           </v-img>
-
-          
         </v-row>
       </div>
     </v-content>
