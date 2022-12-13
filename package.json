@@ -23,7 +23,7 @@
     "core-js": "3.6.5",
     "core-js-bundle": "3.6.5",
     "core-js-pure": "3.6.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^7.15.4",
     "firebase-admin": "^8.13.0",
     "fortmatic": "^2.0.6",
